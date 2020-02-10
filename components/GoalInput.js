@@ -10,21 +10,26 @@ const GoalInput = props =>{
     setEnteredGoal(enteredText);
   }
 
-
+const addGoalHandler = () =>
+{
+  props.onAddGoal(enteredGoal);
+  setEnteredGoal('');
+}
     return (
       <Modal visible={props.visible} animationType= "slide">
         <View style={styles.inputContainer} >
         {/* onChangeText detects user input. The goalInputHandler is a function, but the function call is exluded allowing react to detect on event instead. */}
         <TextInput placeholder="Course Goal" style={styles.input} onChangeText={goalInputHandler} value={enteredGoal} />
-        <Button title="ADD" onPress={props.onAddGoal.bind(this,enteredGoal)}/>
+        <Button title="CANCEL" color= "red" onPress={props.onCancel}/>
+        <Button title="ADD" onPress={addGoalHandler}/>
       </View>
       </Modal>
     );
 };
 
 const styles = StyleSheet.create({
-    inputContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: "center"},
-    input: { borderColor: 'black', borderWidth: 1, padding: '5%', width: '80%' }
+    inputContainer: {flex: 1, justifyContent: 'center', alignItems: "center"},
+    input: { borderColor: 'black', borderWidth: 1, padding: '5%', width: '80%', margin: 10 }
 });
 
 export default GoalInput;

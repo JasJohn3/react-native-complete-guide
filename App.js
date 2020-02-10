@@ -15,23 +15,24 @@ export default function App() {
   {
     setCourseGoals(currentGoals =>[...currentGoals,
       {id: Math.random().toString(), value: goalTitle}]);
-  }
+      setIsAddMode(false);
+  };
   //A function which searches for the ID of an element and removes the element if the ID matches the Input ID from the user
   const removeGoalHandler = goalID =>{
     setCourseGoals(currentGoals =>{
       return currentGoals.filter((goal) => goal.id !== goalID);
     })
+  };
+
+  const  cancelGoalAdditionHandler = () =>
+  {
+    setIsAddMode(false);
   }
-  // const setIsAddMode = () =>
-  // {
-  //   return true;
-  // }
-    
 
   return (
     <View style={styles.screen}>
       <Button title="Add New Objective" onPress={() =>setIsAddMode(true)}/>
-      <GoalInput visible={isAddMode} onAddGoal={addGoalHandler}/>
+      <GoalInput visible={isAddMode} onAddGoal={addGoalHandler} onCancel={cancelGoalAdditionHandler}/>
       <View>
         <FlatList keyExtractor={(item, index)=> item.id} data = {courseGoals} renderItem = {itemData => <GoalItem id = {itemData.item.id} onDelete={removeGoalHandler} title={itemData.item.value} />} />
     </View>
