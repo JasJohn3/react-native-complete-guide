@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, StyleSheet , TextInput, Button} from 'react-native';
+import { View, StyleSheet , TextInput, Button, Modal} from 'react-native';
 const GoalInput = props =>{
   //stores two state types of entered goal, which will be used to store the input values from the User.
   //setEnteredGoal which is used to store the User input into the program.
@@ -12,11 +12,13 @@ const GoalInput = props =>{
 
 
     return (
+      <Modal visible={props.visible} animationType= "slide">
         <View style={styles.inputContainer} >
         {/* onChangeText detects user input. The goalInputHandler is a function, but the function call is exluded allowing react to detect on event instead. */}
         <TextInput placeholder="Course Goal" style={styles.input} onChangeText={goalInputHandler} value={enteredGoal} />
         <Button title="ADD" onPress={props.onAddGoal.bind(this,enteredGoal)}/>
       </View>
+      </Modal>
     );
 };
 
