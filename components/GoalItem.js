@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const GoalItem = props =>
 {
-    return (<View style={styles.listitem}><Text  >{props.title}</Text></View> ) 
+    return (<TouchableOpacity onPress={props.onDelete.bind(this, props.id)}><View style={styles.listitem}><Text  >{props.title}</Text></View></TouchableOpacity> ) 
 }
 
 const styles = StyleSheet.create({listitem:{padding:10, margin:5,backgroundColor:'azure',borderColor:'black',borderWidth: 1}});
