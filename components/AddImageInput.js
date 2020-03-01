@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { View, StyleSheet , TextInput, Button, Modal} from 'react-native';
-const GoalInput = props =>{
+const AddImageInput = props =>{
   //stores two state types of entered goal, which will be used to store the input values from the User.
   //setEnteredGoal which is used to store the User input into the program.
   const [enteredGoal, setEnteredGoal]=useState('');
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
     buttonContainer: {flexDirection: 'row', margin: 10, justifyContent: 'space-between', width: '80%'}
 });
 
-export default GoalInput;
+export default AddImageInput;
